@@ -21,3 +21,10 @@ UI_DIR = .ui
 MOC_DIR = .moc
 
 DESTDIR = ../lib
+
+INCLUDEPATH += include
+
+win32 {
+INCLUDEPATH += C:\OpenSSL-Win64\include
+INCLUDEPATH += C:\Qt\boost\include\boost-1_55
+}
