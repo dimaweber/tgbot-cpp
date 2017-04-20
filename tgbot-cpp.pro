@@ -7,6 +7,7 @@ TARGET = tgbot-cpp
 
 SOURCES += \
   src/Api.cpp \
+  src/EventHandler.cpp \
   src/TgTypeParser.cpp \
   src/TgException.cpp \
   src/net/Url.cpp \
@@ -14,7 +15,9 @@ SOURCES += \
   src/net/HttpParser.cpp \
   src/net/TgLongPoll.cpp \
   src/tools/StringTools.cpp \
-  src/types/InlineQueryResult.cpp
+  src/tools/FileTools.cpp \
+  src/types/InlineQueryResult.cpp \
+  src/types/InputFile.cpp
 
 OBJECTS_DIR = .obj
 UI_DIR = .ui
