@@ -1,7 +1,7 @@
 TEMPLATE=lib
 
 CONFIG +=  c++11 warn_on
-#CONFIG += staticlib
+CONFIG += staticlib
 
 TARGET = tgbot-cpp
 
@@ -27,7 +27,7 @@ DESTDIR = ../lib
 
 INCLUDEPATH += include
 
-win32 {
+win32: {
 INCLUDEPATH += C:\OpenSSL-Win64\include
 INCLUDEPATH += C:\Qt\boost\include\boost-1_55
 }
