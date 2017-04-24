@@ -1,6 +1,6 @@
 TEMPLATE=lib
 
-CONFIG +=  c++11 warn_on
+CONFIG +=  c++11 warn_off
 CONFIG += staticlib
 
 TARGET = tgbot-cpp
