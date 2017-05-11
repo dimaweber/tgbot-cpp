@@ -8,6 +8,9 @@
 #include <memory>
 #include <string>
 
+#include "tgbot/types/InlineKeyboardMarkup.h"
+#include "tgbot/types/InputMessageContent.h"
+
 namespace TgBot {
 
 /**
@@ -16,50 +19,43 @@ namespace TgBot {
  */
 class InlineQueryResult {
 public:
-    typedef std::shared_ptr<InlineQueryResult> Ptr;
+	typedef std::shared_ptr<InlineQueryResult> Ptr;
 
-    InlineQueryResult() {
-        this->disableWebPagePreview = false;
-    }
+	InlineQueryResult() {
 
-    virtual ~InlineQueryResult() { }
+	}
 
-    /**
-     * Type of the result.
-     */
-    std::string type;
+	virtual ~InlineQueryResult() { }
 
-    /**
-     * Unique identifier for this result. (1-64 bytes)
-     */
-    std::string id;
+	/**
+	 * Type of the result.
+	 */
+	std::string type;
 
-    /**
-     * Optional. Title of the result.
-     */
-    std::string title;
+	/**
+	 * Unique identifier for this result. (1-64 bytes)
+	 */
+	std::string id;
 
-    /**
-     * Text of the message t be sent. (1-4096 characters)
-     */
-    std::string messageText;
+	/**
+	 * Requred, optional or missing. See description of derived classes. Title of the result.
+	 */
+	std::string title;
 
-    /**
-     * Optional. Send Markdown or HTML, if you want Telegram apps to
-     * show bold, italic, fixed-width text or inline URLs in your bot's message.
-     */
-    std::string parseMode;
+	/**
+	 * Optional or missing. See description of derived classes. Caption of the file to be sent, 0-200 characters
+	 */
+	std::string caption;
 
-    /**
-     * Optional. Disables link previews for links in the send message.
-     */
-    bool disableWebPagePreview;
+	/**
+	 * Optional. Inline keyboard attached to the message
+	 */
+	InlineKeyboardMarkup::Ptr replyMarkup;
 
-    /**
-     * Optional. Url of the thumbnail for the result.
-     */
-    std::string thumbUrl;
-
+	/**
+	 * Requred, optional or missing. See description of derived classes. Content of the message to be sent
+	 */
+	InputMessageContent::Ptr inputMessageContent;
 };
 }
 

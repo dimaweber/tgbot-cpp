@@ -38,7 +38,7 @@
 #include "tgbot/types/Location.h"
 #include "tgbot/types/Message.h"
 #include "tgbot/types/PhotoSize.h"
-#include "tgbot/types/ReplyKeyboardHide.h"
+#include "tgbot/types/ReplyKeyboardRemove.h"
 #include "tgbot/types/ReplyKeyboardMarkup.h"
 #include "tgbot/types/Sticker.h"
 #include "tgbot/types/Update.h"
@@ -54,6 +54,7 @@
 #include "tgbot/types/InlineQueryResultVideo.h"
 #include "tgbot/types/ChosenInlineResult.h"
 #include "tgbot/tools/StringTools.h"
+#include "tgbot/tools/FileTools.h"
 #include "tgbot/net/HttpClient.h"
 #include "tgbot/net/HttpParser.h"
 #include "tgbot/net/HttpReqArg.h"
@@ -71,13 +72,13 @@
  * @defgroup tools
  *
  * @mainpage
+ * [Go to GitHub](https://github.com/reo7sp)
  *
- * @section Compilation
+ * @section lib_compile Library compilation
  *
- * Firstly you need to install some dependencies. You have to have boost library at the runtime and cmake at the compilation step to be able to use this library.
- * On Debian-based distibutives you can do it with these commands:
+ * Firstly you need to install some dependencies such as Boost and build tools such as CMake. On Debian-based distibutives you can do it with these commands:
  * @code{.sh}
- * sudo apt-get install g++ make binutils cmake libssl-dev libboost-system-dev libboost-iostreams-dev libboost-test-dev
+ * sudo apt-get install g++ make binutils cmake libssl-dev libboost-system-dev libboost-iostreams-dev
  * @endcode
  *
  * To compile the library execute this commands:
@@ -88,15 +89,22 @@
  * sudo make install
  * @endcode
  *
- * That's all. All you have to do now is just link compiled library to your project.
+ * @section bot_compile Bot compilation
+ * With CMake:
+ * [Example CMakeLists.txt](samples/echobot/CMakeLists.txt)
  *
- * If you want, you can also use Docker to build and run your bot. Just set the base image of your's Dockerfile to reo7sp/tgbot-cpp.
+ * Without CMake:
+ * @code{.sh}
+ * g++ telegram_bot.cpp -o telegram_bot --std=c++11 -I/usr/local/include -lTgBot -lboost_system -lboost_iostreams -lssl -lcrypto -lpthread
+ * @endcode
+ *
+ * You can use Docker to build and run your bot. Set the base image of your's Dockerfile to [reo7sp/tgbot-cpp](https://hub.docker.com/r/reo7sp/tgbot-cpp/).
  *
  * @section Samples
  * All samples are located [here](https://github.com/reo7sp/tgbot-cpp/tree/master/samples)
  *
  * @section Feedback
- * Feel free to [create new issues on GitHub](https://github.com/reo7sp/tgbot-cpp/issues) or [contact me on Telegram](https://telegram.me/Reo_SP)
+ * Feel free to [create new issues on GitHub](https://github.com/reo7sp/tgbot-cpp/issues) or [contact me on Telegram](https://t.me/reo7sp)
  *
  * @section Licence
  * [The MIT License](http://opensource.org/licenses/MIT)

@@ -56,6 +56,8 @@ bool endsWith(const string& str1, const string& str2) {
 	string::const_iterator begin1(str1.begin());
 	string::const_iterator it2(str2.end());
 	string::const_iterator begin2(str2.begin());
+	--begin1;
+	--begin2;
 	while (it1 != begin1 && it2 != begin2) {
 		if (*it1 != *it2) {
 			return false;
@@ -78,26 +80,26 @@ string generateRandomString(size_t length) {
 	static const string chars("qwertyuiopasdfghjklzxcvbnmQWERTYUIOPASDFGHJKLZXCVBNM1234567890-=[]\\;',./!@#$%^&*()_+{}|:\"<>?`~");
 	static const size_t charsLen = chars.length();
 	string result;
-	for (int i = 0; i < length; ++i) {
+	for (size_t i = 0; i < length; ++i) {
 		result += chars[rand() % charsLen];
 	}
 	return result;
 }
 
+
 string urlEncode(const string& value, const std::string& additionalLegitChars) {
-	static const string legitPunctuation = "-_.~";
-	ostringstream result;
-	result.fill('0');
-	result << hex;
-	for (const char& c : value) {
-		if (isalnum(c) || legitPunctuation.find(c) != legitPunctuation.npos || additionalLegitChars.find(c) != additionalLegitChars.npos) {
-			result << c;
+	static const string legitPunctuation = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789_.-~:";
+	std::stringstream ss;
+	for (auto const &c : value) {
+		if ((legitPunctuation.find(c) == std::string::npos)
+			&& (additionalLegitChars.find(c)==std::string::npos)) {
+			ss << '%' << std::uppercase << std::setfill('0') << std::setw(2) << std::hex << (unsigned int)(unsigned char)c;
 		} else {
-			result << '%' << setw(2) << int((unsigned char) c);
+			ss << c;
 		}
 	}
 
-	return result.str();
+	return ss.str();
 }
 
 string urlDecode(const string& value) {

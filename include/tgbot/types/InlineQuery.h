@@ -9,6 +9,7 @@
 #include <string>
 
 #include "tgbot/types/User.h"
+#include "tgbot/types/Location.h"
 
 namespace TgBot {
 
@@ -18,27 +19,32 @@ namespace TgBot {
  */
 class InlineQuery {
 public:
-    typedef std::shared_ptr<InlineQuery> Ptr;
+	typedef std::shared_ptr<InlineQuery> Ptr;
 
-    /**
-     * Unique query identifier.
-     */
-    std::string id;
+	/**
+	 * Unique query identifier.
+	 */
+	std::string id;
 
-    /**
-     * Sender.
-     */
-    User::Ptr from;
+	/**
+	 * Sender.
+	 */
+	User::Ptr from;
 
-    /**
-     * Text of the query.
-     */
-    std::string query;
+	/**
+	 * Optional. Sender location, only for bots that request user location
+	 */
+	Location::Ptr location;
 
-    /**
-     * Offset of the results to be returned.
-     */
-    std::string offset;
+	/**
+	 * Text of the query.
+	 */
+	std::string query;
+
+	/**
+	 * Offset of the results to be returned.
+	 */
+	std::string offset;
 };
 
 }

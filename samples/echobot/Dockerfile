@@ -1,6 +1,5 @@
 FROM reo7sp/tgbot-cpp
-MAINTAINER Oleg Morozenkov
-ENV REFRESHED_AT 2015-08-12
+MAINTAINER Oleg Morozenkov <a@reo7sp.ru>
 
 WORKDIR /tmp/echobot
 COPY . .
