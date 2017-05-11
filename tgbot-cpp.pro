@@ -1,3 +1,5 @@
+QT -= gui
+
 TEMPLATE=lib
 
 CONFIG += staticlib c++11 warn_on
@@ -14,6 +16,9 @@ SOURCES += \
   src/net/TgLongPoll.cpp \
   src/tools/StringTools.cpp \
   src/types/InlineQueryResult.cpp
+
+
+INCLUDEPATH = include
 
 OBJECTS_DIR = .obj
 UI_DIR = .ui
